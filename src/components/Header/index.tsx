@@ -11,7 +11,7 @@ export function Header() {
 
       <nav>
         <span>
-          <MapPin size={22} weight="fill" />
+          <MapPin size={20} weight="fill" />
           Porto Alegre, RS
         </span>
 
