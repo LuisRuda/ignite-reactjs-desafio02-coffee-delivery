@@ -24,6 +24,12 @@ export const GloblaStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
+  @media (max-width: 992px) {
+    html {
+      font-size: 90%;
+    }
+  }
+
   @media (max-width: 768px) {
     html {
       font-size: 87.5%;
