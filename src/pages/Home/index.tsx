@@ -11,7 +11,7 @@ import {
   IconRoundedBase,
 } from './styles'
 
-import imageCoffeeDelivery from '../../assets/coffee-delivery.svg'
+import { coffeeDeliverySlogan } from '../../assets'
 
 export function Home() {
   return (
@@ -53,7 +53,7 @@ export function Home() {
 
         <ImageContainer>
           <img
-            src={imageCoffeeDelivery}
+            src={coffeeDeliverySlogan}
             alt="Copo de café, graõs de café e café moído"
           />
         </ImageContainer>

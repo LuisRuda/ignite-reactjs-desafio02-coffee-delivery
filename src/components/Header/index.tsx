@@ -2,7 +2,7 @@ import { HeaderContainer } from './styles'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
-import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
+import { logoCoffeeDelivery } from '../../assets'
 
 export function Header() {
   return (
