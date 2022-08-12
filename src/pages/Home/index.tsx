@@ -1,5 +1,8 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
+import { coffeesData } from './coffees'
+import { Card } from './components/Card'
+import { coffeeDeliverySlogan } from '../../assets'
 import {
   HomeContainer,
   InfoContainer,
@@ -9,9 +12,9 @@ import {
   ImageContainer,
   Detail,
   IconRoundedBase,
+  MenuContainer,
+  MenuList,
 } from './styles'
-
-import { coffeeDeliverySlogan } from '../../assets'
 
 export function Home() {
   return (
@@ -58,6 +61,16 @@ export function Home() {
           />
         </ImageContainer>
       </section>
+
+      <MenuContainer>
+        <h2>Nossos cafés</h2>
+
+        <MenuList>
+          {coffeesData.map((coffee) => (
+            <Card key={coffee.id} coffee={coffee} />
+          ))}
+        </MenuList>
+      </MenuContainer>
     </HomeContainer>
   )
 }

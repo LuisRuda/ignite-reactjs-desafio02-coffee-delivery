@@ -116,3 +116,20 @@ export const ImageContainer = styled.div`
     }
   }
 `
+
+export const MenuContainer = styled.main`
+  padding: 2rem 0;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Baloo 2';
+  }
+`
+
+export const MenuList = styled.ul`
+  margin-top: 3.375rem;
+  display: grid;
+  gap: 2.5rem 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+`
