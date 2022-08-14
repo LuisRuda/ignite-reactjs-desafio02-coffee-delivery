@@ -132,4 +132,17 @@ export const MenuList = styled.ul`
   display: grid;
   gap: 2.5rem 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: space-around;
+    grid-template-columns: 15rem 15rem;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 17.5rem;
+  }
 `
