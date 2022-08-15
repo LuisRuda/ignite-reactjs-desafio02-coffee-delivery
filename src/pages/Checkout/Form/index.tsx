@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components'
 import { CurrencyDollar, MapPinLine } from 'phosphor-react'
 
-import { FormContainer, SectionHeader } from './styles'
+import { FormContainer, SectionHeader, InputsContainer, Input } from './styles'
 
 export function Form() {
   const theme = useTheme()
@@ -16,13 +16,15 @@ export function Form() {
             <span>Informe o endereço onde deseja receber seu pedido</span>
           </div>
         </SectionHeader>
-        <input type="text" placeholder="CEP" />
-        <input type="text" placeholder="Rua" />
-        <input type="text" placeholder="Número" />
-        <input type="text" placeholder="Complemento" />
-        <input type="text" placeholder="Bairro" />
-        <input type="text" placeholder="Cidade" />
-        <input type="text" placeholder="UF" />
+        <InputsContainer>
+          <Input type="text" placeholder="CEP" />
+          <Input className="street" type="text" placeholder="Rua" />
+          <Input min={0} type="number" placeholder="Número" />
+          <Input className="flex-1" type="text" placeholder="Complemento" />
+          <Input type="text" placeholder="Bairro" />
+          <Input className="city" type="text" placeholder="Cidade" />
+          <Input className="uf" type="text" placeholder="UF" />
+        </InputsContainer>
       </div>
 
       <div>

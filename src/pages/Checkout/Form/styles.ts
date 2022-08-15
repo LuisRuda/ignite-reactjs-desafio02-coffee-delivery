@@ -35,3 +35,44 @@ export const SectionHeader = styled.div`
     color: ${({ theme }) => theme['gray-700']};
   }
 `
+
+export const InputsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 0.5rem;
+
+  .uf {
+    width: 15%;
+  }
+
+  .street {
+    width: 100%;
+  }
+
+  .city {
+    flex: 1;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+`
+
+export const Input = styled.input`
+  height: 2.625rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: ${(props) => props.theme['gray-700']};
+  background: ${({ theme }) => theme['gray-200']};
+  border: 1px solid ${({ theme }) => theme['gray-300']};
+
+  &:focus {
+    box-shadow: none;
+    border-color: ${({ theme }) => theme['yellow-900']};
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme['gray-600']};
+  }
+`
