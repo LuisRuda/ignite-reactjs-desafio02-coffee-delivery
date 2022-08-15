@@ -7,7 +7,9 @@ import { logoCoffeeDelivery } from '../../assets'
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={logoCoffeeDelivery} alt="Coffee Delivery" />
+      <NavLink to="/" title="Home">
+        <img src={logoCoffeeDelivery} alt="Coffee Delivery" />
+      </NavLink>
 
       <nav>
         <span>
@@ -15,7 +17,7 @@ export function Header() {
           Porto Alegre, RS
         </span>
 
-        <NavLink to="/cart" title="Carrinho">
+        <NavLink to="/checkout" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
         </NavLink>
       </nav>
