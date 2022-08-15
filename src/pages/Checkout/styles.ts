@@ -17,17 +17,9 @@ export const CheckoutContainer = styled.div`
   }
 `
 
-export const BaseContainer = styled.div`
+export const CoffeesContainer = styled.div`
   flex: 1;
   padding: 2.5rem;
-  border-radius: 6px;
   background: ${({ theme }) => theme['gray-100']};
-
-  & + & {
-    margin-top: 0.75rem;
-  }
-`
-
-export const CoffeesContainer = styled(BaseContainer)`
   border-radius: 6px 44px;
 `
