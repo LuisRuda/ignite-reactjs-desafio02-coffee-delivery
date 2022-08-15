@@ -35,6 +35,24 @@ export function Checkout() {
                 </span>
               </div>
             </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="credit-card" />
+                Cartão de crédito
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="debit-card" />
+                Cartão de débito
+              </label>
+            </div>
+            <div className="radio">
+              <label>
+                <input type="radio" value="money" />
+                Dinheiro
+              </label>
+            </div>
           </div>
         </form>
       </section>
