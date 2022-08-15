@@ -1,4 +1,4 @@
-import { CheckoutContainer } from './styles'
+import { CheckoutContainer, BaseContainer, CoffeesContainer } from './styles'
 
 export function Checkout() {
   return (
@@ -7,7 +7,7 @@ export function Checkout() {
         <h2>Complete seu pedido</h2>
 
         <form action="">
-          <div>
+          <BaseContainer>
             <div>
               <img src="" alt="" />
               <div>
@@ -22,9 +22,9 @@ export function Checkout() {
             <input type="text" placeholder="Bairro" />
             <input type="text" placeholder="Cidade" />
             <input type="text" placeholder="UF" />
-          </div>
+          </BaseContainer>
 
-          <div>
+          <BaseContainer>
             <div>
               <img src="" alt="" />
               <div>
@@ -53,12 +53,14 @@ export function Checkout() {
                 Dinheiro
               </label>
             </div>
-          </div>
+          </BaseContainer>
         </form>
       </section>
 
       <section>
         <h2>Cafés selecionados</h2>
+
+        <CoffeesContainer />
       </section>
     </CheckoutContainer>
   )
