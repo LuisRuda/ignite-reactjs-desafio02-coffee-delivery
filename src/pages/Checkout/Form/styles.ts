@@ -65,6 +65,18 @@ export const InputsContainer = styled.div`
   .flex-1 {
     flex: 1;
   }
+
+  @media (max-width: 940px) {
+    .city {
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 660px) {
+    input {
+      width: 100%;
+    }
+  }
 `
 
 export const Input = styled.input`
