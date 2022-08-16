@@ -1,7 +1,13 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
 import { deliveryImage } from '../../assets'
-import { SuccessContainer } from './styles'
+import {
+  SuccessContainer,
+  DetailsContainer,
+  LineInfoContainer,
+  RoundedIcon,
+  ImageContainer,
+} from './styles'
 
 export function Success() {
   return (
@@ -10,39 +16,49 @@ export function Success() {
       <h2>Agora é só aguardar que logo o café chegará até você</h2>
 
       <div>
-        <section>
-          <div>
-            <div>
-              <MapPin weight="fill" />
-            </div>
-            <div>
-              <span>Entrega em </span>
-              <span>Rua João Daniel Martinelli, 102</span>
-            </div>
-            <span>Farrapos - Porto Alegre, RS</span>
-          </div>
+        <DetailsContainer>
+          <section>
+            <LineInfoContainer>
+              <RoundedIcon background="purple-500">
+                <MapPin weight="fill" />
+              </RoundedIcon>
+              <div>
+                <div>
+                  <span>Entrega em </span>
+                  <strong>Rua João Daniel Martinelli, 102</strong>
+                </div>
+                <span>Farrapos - Porto Alegre, RS</span>
+              </div>
+            </LineInfoContainer>
 
-          <div>
-            <div>
-              <Timer weight="fill" />
-            </div>
-            <span>Previsão de entrega</span>
-            <span>20 min - 30 min </span>
-          </div>
+            <LineInfoContainer>
+              <RoundedIcon background="yellow-500">
+                <Timer weight="fill" />
+              </RoundedIcon>
+              <div>
+                <span>Previsão de entrega</span>
+                <strong>20 min - 30 min </strong>
+              </div>
+            </LineInfoContainer>
 
-          <div>
-            <div>
-              <CurrencyDollar />
-            </div>
-            <span>Pagamento na entrega</span>
-            <span>Cartão de Crédito</span>
-          </div>
-        </section>
+            <LineInfoContainer>
+              <RoundedIcon background="yellow-900">
+                <CurrencyDollar />
+              </RoundedIcon>
+              <div>
+                <span>Pagamento na entrega</span>
+                <strong>Cartão de Crédito</strong>
+              </div>
+            </LineInfoContainer>
+          </section>
+        </DetailsContainer>
 
-        <img
-          src={deliveryImage}
-          alt="Imagem de motoboy entregando seu pedido"
-        />
+        <ImageContainer>
+          <img
+            src={deliveryImage}
+            alt="Imagem de motoboy entregando seu pedido"
+          />
+        </ImageContainer>
       </div>
     </SuccessContainer>
   )
