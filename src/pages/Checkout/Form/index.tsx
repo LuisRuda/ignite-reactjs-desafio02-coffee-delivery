@@ -1,7 +1,20 @@
 import { useTheme } from 'styled-components'
-import { CurrencyDollar, MapPinLine } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
 
-import { FormContainer, SectionHeader, InputsContainer, Input } from './styles'
+import {
+  FormContainer,
+  SectionHeader,
+  InputsContainer,
+  Input,
+  PaymentContainer,
+  RadioButtonContainer,
+} from './styles'
 
 export function Form() {
   const theme = useTheme()
@@ -37,24 +50,30 @@ export function Form() {
             </span>
           </div>
         </SectionHeader>
-        <div className="radio">
-          <label>
-            <input type="radio" value="credit-card" />
-            Cartão de crédito
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="debit-card" />
-            Cartão de débito
-          </label>
-        </div>
-        <div className="radio">
-          <label>
-            <input type="radio" value="money" />
-            Dinheiro
-          </label>
-        </div>
+
+        <PaymentContainer>
+          <RadioButtonContainer className="radio" type="button">
+            <label>
+              <CreditCard />
+              <input hidden type="radio" value="credit-card" />
+              Cartão de crédito
+            </label>
+          </RadioButtonContainer>
+          <RadioButtonContainer className="radio" type="button">
+            <label>
+              <Bank />
+              <input hidden type="radio" value="debit-card" />
+              Cartão de débito
+            </label>
+          </RadioButtonContainer>
+          <RadioButtonContainer className="radio" type="button">
+            <label>
+              <Money />
+              <input hidden type="radio" value="money" />
+              Dinheiro
+            </label>
+          </RadioButtonContainer>
+        </PaymentContainer>
       </div>
     </FormContainer>
   )

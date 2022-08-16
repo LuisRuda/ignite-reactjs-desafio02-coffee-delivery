@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const FormContainer = styled.form`
   > div {
@@ -74,5 +74,61 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${(props) => props.theme['gray-600']};
+  }
+`
+
+export const PaymentContainer = styled.div`
+  gap: 0.75rem;
+  display: grid;
+  height: 3.1875rem;
+  grid-template-columns: 1fr 1fr 1fr;
+`
+
+interface IRadioButtonContainer {
+  selected?: boolean
+}
+
+export const RadioButtonContainer = styled.button<IRadioButtonContainer>`
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background: ${({ theme }) => theme['gray-300']};
+  transition: background 0.2s;
+
+  &:hover {
+    ${(props) =>
+      !props.selected &&
+      css`
+        background: ${({ theme }) => theme['gray-400']};
+
+        label {
+          color: ${({ theme }) => theme['gray-800']};
+        }
+      `}
+  }
+
+  ${(props) =>
+    props.selected &&
+    css`
+      background: ${({ theme }) => theme['purple-100']};
+      border: 1px solid ${({ theme }) => theme['purple-500']};
+    `}
+
+  label {
+    gap: 0.75rem;
+    display: flex;
+    cursor: pointer;
+    line-height: 1.6;
+    font-size: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme['gray-700']};
+
+    svg {
+      width: 0.9rem;
+      height: 0.9rem;
+      color: ${({ theme }) => theme['purple-500']};
+    }
   }
 `
