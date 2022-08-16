@@ -1,6 +1,7 @@
 import { Trash } from 'phosphor-react'
 
 import { Form } from './Form'
+import { CounterControls } from '../../components'
 import { CheckoutContainer, CartContainer } from './styles'
 
 export function Checkout() {
@@ -22,6 +23,7 @@ export function Checkout() {
               <div>
                 <span>Expresso Tradicional</span>
                 <div>
+                  <CounterControls smallHeight />
                   <button type="button">
                     <Trash />
                     Remover

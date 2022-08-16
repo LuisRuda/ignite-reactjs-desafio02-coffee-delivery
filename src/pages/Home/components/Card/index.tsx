@@ -1,7 +1,8 @@
-import { ShoppingCartSimple, Minus, Plus } from 'phosphor-react'
+import { ShoppingCartSimple } from 'phosphor-react'
 
 import { formCurrency } from '../../../../utils/format'
 import { ICardProps } from './types'
+import { CounterControls } from '../../../../components'
 import {
   CardContainer,
   Content,
@@ -9,7 +10,6 @@ import {
   CardFooter,
   PriceContainer,
   CartButtonsContainer,
-  CounterControlsContainer,
 } from './styles'
 
 export function Card({ coffee }: ICardProps) {
@@ -33,15 +33,7 @@ export function Card({ coffee }: ICardProps) {
             <span>{formCurrency.format(coffee.price).replace('R$', '')}</span>
           </PriceContainer>
           <CartButtonsContainer>
-            <CounterControlsContainer>
-              <button>
-                <Minus weight="fill" />
-              </button>
-              <span>0</span>
-              <button>
-                <Plus weight="fill" />
-              </button>
-            </CounterControlsContainer>
+            <CounterControls />
             <button>
               <ShoppingCartSimple weight="fill" />
             </button>
