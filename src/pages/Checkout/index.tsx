@@ -1,6 +1,6 @@
 import { Trash } from 'phosphor-react'
 
-import { Form } from './Form'
+import { Form } from './components/Form'
 import { menuCoffeeTraditional, menuCapuccino } from '../../assets'
 import { CounterControls } from '../../components'
 import {
