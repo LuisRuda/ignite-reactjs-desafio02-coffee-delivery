@@ -17,7 +17,7 @@ export const CheckoutContainer = styled.div`
   }
 `
 
-export const CoffeesContainer = styled.div`
+export const CartContainer = styled.div`
   flex: 1;
   padding: 2.5rem;
   background: ${({ theme }) => theme['gray-100']};

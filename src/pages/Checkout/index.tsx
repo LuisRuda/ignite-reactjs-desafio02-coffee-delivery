@@ -1,5 +1,7 @@
+import { Trash } from 'phosphor-react'
+
 import { Form } from './Form'
-import { CheckoutContainer, CoffeesContainer } from './styles'
+import { CheckoutContainer, CartContainer } from './styles'
 
 export function Checkout() {
   return (
@@ -13,7 +15,39 @@ export function Checkout() {
       <section>
         <h2>Cafés selecionados</h2>
 
-        <CoffeesContainer />
+        <CartContainer>
+          <ul>
+            <li>
+              <img src="" alt="" />
+              <div>
+                <span>Expresso Tradicional</span>
+                <div>
+                  <button type="button">
+                    <Trash />
+                    Remover
+                  </button>
+                </div>
+              </div>
+              <span>R$ 9,90</span>
+            </li>
+          </ul>
+
+          <div>
+            <div>
+              <span>Total de items</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div>
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </div>
+            <button type="button">CONFIRMAR PEDIDO</button>
+          </div>
+        </CartContainer>
       </section>
     </CheckoutContainer>
   )
