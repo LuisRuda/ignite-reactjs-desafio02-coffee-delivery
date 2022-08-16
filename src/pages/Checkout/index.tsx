@@ -1,8 +1,15 @@
 import { Trash } from 'phosphor-react'
 
 import { Form } from './Form'
+import { menuCoffeeTraditional, menuCapuccino } from '../../assets'
 import { CounterControls } from '../../components'
-import { CheckoutContainer, CartContainer } from './styles'
+import {
+  CheckoutContainer,
+  CartContainer,
+  CartItem,
+  CardInfo,
+  TotalContainer,
+} from './styles'
 
 export function Checkout() {
   return (
@@ -18,23 +25,37 @@ export function Checkout() {
 
         <CartContainer>
           <ul>
-            <li>
-              <img src="" alt="" />
-              <div>
+            <CartItem>
+              <img src={menuCoffeeTraditional} alt="Café tradicional" />
+              <CardInfo>
                 <span>Expresso Tradicional</span>
                 <div>
                   <CounterControls smallHeight />
                   <button type="button">
                     <Trash />
-                    Remover
+                    REMOVER
                   </button>
                 </div>
-              </div>
-              <span>R$ 9,90</span>
-            </li>
+              </CardInfo>
+              <strong>R$ 9,90</strong>
+            </CartItem>
+            <CartItem>
+              <img src={menuCapuccino} alt="Café tradicional" />
+              <CardInfo>
+                <span>Capuccino</span>
+                <div>
+                  <CounterControls smallHeight />
+                  <button type="button">
+                    <Trash />
+                    REMOVER
+                  </button>
+                </div>
+              </CardInfo>
+              <strong>R$ 9,90</strong>
+            </CartItem>
           </ul>
 
-          <div>
+          <TotalContainer>
             <div>
               <span>Total de items</span>
               <span>R$ 29,70</span>
@@ -44,11 +65,11 @@ export function Checkout() {
               <span>R$ 3,50</span>
             </div>
             <div>
-              <span>Total</span>
-              <span>R$ 33,20</span>
+              <strong>Total</strong>
+              <strong>R$ 33,20</strong>
             </div>
             <button type="button">CONFIRMAR PEDIDO</button>
-          </div>
+          </TotalContainer>
         </CartContainer>
       </section>
     </CheckoutContainer>
