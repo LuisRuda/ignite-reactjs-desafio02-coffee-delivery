@@ -5,10 +5,19 @@ export const FormContainer = styled.form`
     flex: 1;
     padding: 2.5rem;
     border-radius: 6px;
+
     background: ${({ theme }) => theme['gray-100']};
 
     &:last-child {
       margin-top: 0.75rem;
+    }
+  }
+
+  @media (max-width: 528px) {
+    > div {
+      &:last-child {
+        height: 18rem;
+      }
     }
   }
 `
@@ -82,6 +91,11 @@ export const PaymentContainer = styled.div`
   display: grid;
   height: 3.1875rem;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 528px) {
+    justify-content: center;
+    grid-template-columns: 12rem;
+  }
 `
 
 interface IRadioButtonContainer {
@@ -91,6 +105,7 @@ interface IRadioButtonContainer {
 export const RadioButtonContainer = styled.button<IRadioButtonContainer>`
   border: none;
   cursor: pointer;
+  padding: 0.2rem;
   border-radius: 6px;
   background: ${({ theme }) => theme['gray-300']};
   transition: background 0.2s;
@@ -130,5 +145,9 @@ export const RadioButtonContainer = styled.button<IRadioButtonContainer>`
       height: 0.9rem;
       color: ${({ theme }) => theme['purple-500']};
     }
+  }
+
+  @media (max-width: 528px) {
+    height: 2rem;
   }
 `

@@ -4,6 +4,7 @@ export const CheckoutContainer = styled.div`
   gap: 2rem;
   display: grid;
   margin-top: 2.5rem;
+  margin-bottom: 2rem;
   grid-template-columns: 1fr 28rem;
 
   > section {
@@ -14,6 +15,19 @@ export const CheckoutContainer = styled.div`
       font-family: 'Baloo 2';
       margin-bottom: 0.9375rem;
     }
+  }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 25rem;
+  }
+
+  @media (max-width: 940px) {
+    justify-content: center;
+    grid-template-columns: 0.8fr;
+  }
+
+  @media (max-width: 630px) {
+    grid-template-columns: 1fr;
   }
 `
 
