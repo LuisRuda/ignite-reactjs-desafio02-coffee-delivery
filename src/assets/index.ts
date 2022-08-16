@@ -1,4 +1,5 @@
 import coffeeDeliverySlogan from './coffee-delivery.svg'
+import deliveryImage from './delivery.svg'
 import logoCoffeeDelivery from './logo-coffee-delivery.svg'
 import menuCapuccino from './menu-capuccino.svg'
 import menuCoffeeAmerican from './menu-coffee-american.svg'
@@ -17,6 +18,7 @@ import menuMocchiato from './menu-mocchiato.svg'
 
 export {
   coffeeDeliverySlogan,
+  deliveryImage,
   logoCoffeeDelivery,
   menuCapuccino,
   menuCoffeeAmerican,
