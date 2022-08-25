@@ -3,14 +3,19 @@ import { Minus, Plus } from 'phosphor-react'
 import { ICounterControlsProps } from './types'
 import { CounterContainer } from './styles'
 
-export function CounterControls({ smallHeight }: ICounterControlsProps) {
+export function CounterControls({
+  smallHeight,
+  amount,
+  onDecrement,
+  onIncrement,
+}: ICounterControlsProps) {
   return (
     <CounterContainer smallHeight={smallHeight}>
-      <button>
+      <button onClick={onDecrement}>
         <Minus weight="fill" />
       </button>
-      <span>0</span>
-      <button>
+      <span>{amount}</span>
+      <button onClick={onIncrement}>
         <Plus weight="fill" />
       </button>
     </CounterContainer>

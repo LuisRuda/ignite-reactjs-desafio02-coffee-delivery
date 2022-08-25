@@ -1,7 +1,10 @@
+import { useContext } from 'react'
+
 import { Trash } from 'phosphor-react'
 
 import { Form } from './components/Form'
-import { menuCoffeeTraditional, menuCapuccino } from '../../assets'
+import { formCurrency } from '../../utils/format'
+import { CartContext } from '../../contexts/CartContext'
 import { CounterControls } from '../../components'
 import {
   CheckoutContainer,
@@ -12,6 +15,8 @@ import {
 } from './styles'
 
 export function Checkout() {
+  const { coffees } = useContext(CartContext)
+
   return (
     <CheckoutContainer>
       <section>
@@ -24,36 +29,34 @@ export function Checkout() {
         <h2>Cafés selecionados</h2>
 
         <CartContainer>
-          <ul>
-            <CartItem>
-              <img src={menuCoffeeTraditional} alt="Café tradicional" />
-              <CardInfo>
-                <span>Expresso Tradicional</span>
-                <div>
-                  <CounterControls smallHeight />
-                  <button type="button">
-                    <Trash />
-                    REMOVER
-                  </button>
-                </div>
-              </CardInfo>
-              <strong>R$ 9,90</strong>
-            </CartItem>
-            <CartItem>
-              <img src={menuCapuccino} alt="Café tradicional" />
-              <CardInfo>
-                <span>Capuccino</span>
-                <div>
-                  <CounterControls smallHeight />
-                  <button type="button">
-                    <Trash />
-                    REMOVER
-                  </button>
-                </div>
-              </CardInfo>
-              <strong>R$ 9,90</strong>
-            </CartItem>
-          </ul>
+          {coffees.length === 0 && (
+            <span>Nenhum café selecionado no momento :(</span>
+          )}
+          {coffees.length > 0 && (
+            <ul>
+              {coffees.map((coffee) => (
+                <CartItem key={coffee.id}>
+                  <img src={coffee.image} alt={coffee.name} />
+                  <CardInfo>
+                    <span>{coffee.name}</span>
+                    <div>
+                      <CounterControls
+                        smallHeight
+                        amount={coffee.amount}
+                        onDecrement={() => {}}
+                        onIncrement={() => {}}
+                      />
+                      <button type="button">
+                        <Trash />
+                        REMOVER
+                      </button>
+                    </div>
+                  </CardInfo>
+                  <strong>{formCurrency.format(coffee.price)}</strong>
+                </CartItem>
+              ))}
+            </ul>
+          )}
 
           <TotalContainer>
             <div>

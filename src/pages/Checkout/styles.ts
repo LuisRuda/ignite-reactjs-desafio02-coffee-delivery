@@ -41,6 +41,14 @@ export const CartContainer = styled.div`
     list-style: none;
     margin-bottom: 1.5rem;
   }
+
+  > span {
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid ${({ theme }) => theme['gray-300']};
+  }
 `
 
 export const CartItem = styled.li`
