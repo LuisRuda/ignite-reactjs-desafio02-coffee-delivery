@@ -37,6 +37,10 @@ export const CounterContainer = styled.div<ICounterContainer>`
         color: ${({ theme }) => theme['purple-900']};
       }
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   span {
