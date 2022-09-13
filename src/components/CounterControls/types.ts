@@ -3,4 +3,5 @@ export interface ICounterControlsProps {
   amount: number
   onDecrement: () => void
   onIncrement: () => void
+  decrementDisabled?: boolean
 }

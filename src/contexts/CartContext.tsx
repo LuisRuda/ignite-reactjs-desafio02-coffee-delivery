@@ -3,6 +3,7 @@ import { createContext, ReactNode, useReducer, useEffect } from 'react'
 import {
   addNewCoffeeAction,
   updateCoffeeAction,
+  removeCoffeeAction,
 } from '../reducers/cart/actions'
 import { ICoffee, CartReducer } from '../reducers/cart/reducer'
 
@@ -15,6 +16,7 @@ interface ICartContextType {
   coffees: ICoffee[]
   addNewCoffee: (newCoffee: ICoffee) => void
   updateCoffee: (updateCoffee: IUpdateCoffee) => void
+  removeCoffee: (coffeeId: string) => void
 }
 
 export const CartContext = createContext({} as ICartContextType)
@@ -60,12 +62,17 @@ export function CartContextProvider({ children }: ICartContextProviderProps) {
     dispatch(updateCoffeeAction(coffeeUpdate))
   }
 
+  function removeCoffee(coffeeId: string) {
+    dispatch(removeCoffeeAction(coffeeId))
+  }
+
   return (
     <CartContext.Provider
       value={{
         coffees,
         addNewCoffee,
         updateCoffee,
+        removeCoffee,
       }}
     >
       {children}

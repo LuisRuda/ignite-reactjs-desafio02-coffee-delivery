@@ -18,14 +18,16 @@ interface ICartState {
 export function CartReducer(state: ICartState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_COFFEE: {
+      const { newCoffee } = action.payload
+
       const coffeeIndex = state.coffees.findIndex(
-        (cf) => cf.id === action.payload.newCoffee.id,
+        (cf) => cf.id === newCoffee.id,
       )
 
       toast.success('Café adicionado ao seu carrinho!')
       if (coffeeIndex >= 0) {
         return produce(state, (draft) => {
-          draft.coffees[coffeeIndex] = action.payload.newCoffee
+          draft.coffees[coffeeIndex] = newCoffee
         })
       }
       return produce(state, (draft) => {
@@ -33,15 +35,29 @@ export function CartReducer(state: ICartState, action: any) {
       })
     }
     case ActionTypes.UPDATA_COFFEE: {
-      const { id, amount } = action.payload.updateCoffee
+      const { updateCoffee } = action.payload
 
-      const coffeeIndex = state.coffees.findIndex((cf) => cf.id === id)
+      const coffeeIndex = state.coffees.findIndex(
+        (cf) => cf.id === updateCoffee.id,
+      )
 
       if (coffeeIndex < 0) {
         return state
       }
       return produce(state, (draft) => {
-        draft.coffees[coffeeIndex].amount = amount
+        draft.coffees[coffeeIndex].amount = updateCoffee.amount
+      })
+    }
+    case ActionTypes.REMOVE_COFFEE: {
+      const { coffeeId } = action.payload
+
+      const coffeeIndex = state.coffees.findIndex((cf) => cf.id === coffeeId)
+
+      if (coffeeIndex < 0) {
+        return state
+      }
+      return produce(state, (draft) => {
+        draft.coffees.splice(coffeeIndex, 1)
       })
     }
     default:

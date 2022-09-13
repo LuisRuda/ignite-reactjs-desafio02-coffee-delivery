@@ -8,12 +8,16 @@ export function CounterControls({
   amount,
   onDecrement,
   onIncrement,
+  decrementDisabled,
 }: ICounterControlsProps) {
-  const decrementDisabled = amount === 0
+  const isDecrementDisabled = amount === 0
 
   return (
     <CounterContainer smallHeight={smallHeight}>
-      <button onClick={onDecrement} disabled={decrementDisabled}>
+      <button
+        onClick={onDecrement}
+        disabled={decrementDisabled || isDecrementDisabled}
+      >
         <Minus weight="fill" />
       </button>
       <span>{amount}</span>

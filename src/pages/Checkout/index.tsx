@@ -15,14 +15,20 @@ import {
 } from './styles'
 
 export function Checkout() {
-  const { coffees, updateCoffee } = useContext(CartContext)
+  const { coffees, updateCoffee, removeCoffee } = useContext(CartContext)
 
   function handleIncrement(coffeeUpdate: IUpdateCoffee) {
     updateCoffee(coffeeUpdate)
   }
 
   function handleDecrement(coffeeUpdate: IUpdateCoffee) {
+    if (coffeeUpdate.amount === 0) return
+
     updateCoffee(coffeeUpdate)
+  }
+
+  function handleRemoveCoffee(coffeeId: string) {
+    removeCoffee(coffeeId)
   }
 
   return (
@@ -63,8 +69,12 @@ export function Checkout() {
                             amount: coffee.amount + 1,
                           })
                         }
+                        decrementDisabled={coffee.amount === 1}
                       />
-                      <button type="button">
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveCoffee(coffee.id)}
+                      >
                         <Trash />
                         REMOVER
                       </button>
