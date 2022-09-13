@@ -1,20 +1,29 @@
 import { createContext, ReactNode, useReducer, useEffect } from 'react'
 
-import { addNewCoffeeAction } from '../reducers/cart/actions'
-import { Coffee, CartReducer } from '../reducers/cart/reducer'
+import {
+  addNewCoffeeAction,
+  updateCoffeeAction,
+} from '../reducers/cart/actions'
+import { ICoffee, CartReducer } from '../reducers/cart/reducer'
 
-interface CartContextType {
-  coffees: Coffee[]
-  addNewCoffee: (newCoffee: Coffee) => void
+export interface IUpdateCoffee {
+  id: string
+  amount: number
 }
 
-export const CartContext = createContext({} as CartContextType)
+interface ICartContextType {
+  coffees: ICoffee[]
+  addNewCoffee: (newCoffee: ICoffee) => void
+  updateCoffee: (updateCoffee: IUpdateCoffee) => void
+}
 
-interface CartContextProviderProps {
+export const CartContext = createContext({} as ICartContextType)
+
+interface ICartContextProviderProps {
   children: ReactNode
 }
 
-export function CartContextProvider({ children }: CartContextProviderProps) {
+export function CartContextProvider({ children }: ICartContextProviderProps) {
   const [cartState, dispatch] = useReducer(
     CartReducer,
     {
@@ -43,8 +52,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
   }, [cartState])
 
-  function addNewCoffee(newCoffee: Coffee) {
+  function addNewCoffee(newCoffee: ICoffee) {
     dispatch(addNewCoffeeAction(newCoffee))
+  }
+
+  function updateCoffee(coffeeUpdate: IUpdateCoffee) {
+    dispatch(updateCoffeeAction(coffeeUpdate))
   }
 
   return (
@@ -52,6 +65,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       value={{
         coffees,
         addNewCoffee,
+        updateCoffee,
       }}
     >
       {children}

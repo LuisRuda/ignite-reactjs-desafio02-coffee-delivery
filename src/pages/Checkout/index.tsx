@@ -4,7 +4,7 @@ import { Trash } from 'phosphor-react'
 
 import { Form } from './components/Form'
 import { formCurrency } from '../../utils/format'
-import { CartContext } from '../../contexts/CartContext'
+import { CartContext, IUpdateCoffee } from '../../contexts/CartContext'
 import { CounterControls } from '../../components'
 import {
   CheckoutContainer,
@@ -15,7 +15,15 @@ import {
 } from './styles'
 
 export function Checkout() {
-  const { coffees } = useContext(CartContext)
+  const { coffees, updateCoffee } = useContext(CartContext)
+
+  function handleIncrement(coffeeUpdate: IUpdateCoffee) {
+    updateCoffee(coffeeUpdate)
+  }
+
+  function handleDecrement(coffeeUpdate: IUpdateCoffee) {
+    updateCoffee(coffeeUpdate)
+  }
 
   return (
     <CheckoutContainer>
@@ -29,10 +37,10 @@ export function Checkout() {
         <h2>Cafés selecionados</h2>
 
         <CartContainer>
-          {coffees.length === 0 && (
+          {coffees?.length === 0 && (
             <span>Nenhum café selecionado no momento :(</span>
           )}
-          {coffees.length > 0 && (
+          {coffees?.length > 0 && (
             <ul>
               {coffees.map((coffee) => (
                 <CartItem key={coffee.id}>
@@ -43,8 +51,18 @@ export function Checkout() {
                       <CounterControls
                         smallHeight
                         amount={coffee.amount}
-                        onDecrement={() => {}}
-                        onIncrement={() => {}}
+                        onDecrement={() =>
+                          handleDecrement({
+                            id: coffee.id,
+                            amount: coffee.amount - 1,
+                          })
+                        }
+                        onIncrement={() =>
+                          handleIncrement({
+                            id: coffee.id,
+                            amount: coffee.amount + 1,
+                          })
+                        }
                       />
                       <button type="button">
                         <Trash />
