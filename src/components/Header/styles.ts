@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
   height: 6.5rem;
@@ -6,7 +7,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  nav {
+  > nav {
     display: flex;
     gap: 0.75rem;
     align-items: center;
@@ -27,19 +28,36 @@ export const HeaderContainer = styled.header`
         color: ${({ theme }) => theme['purple-500']};
       }
     }
+  }
+`
 
-    a {
-      width: 2.375rem;
-      height: 2.375rem;
-      display: flex;
-      border-radius: 6px;
-      align-items: center;
-      justify-content: center;
-      background: ${({ theme }) => theme['yellow-100']};
+export const CartLink = styled(NavLink)`
+  width: 2.375rem;
+  height: 2.375rem;
+  display: flex;
+  position: relative;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  background: ${({ theme }) => theme['yellow-100']};
 
-      svg {
-        color: ${({ theme }) => theme['yellow-900']};
-      }
-    }
+  svg {
+    color: ${({ theme }) => theme['yellow-900']};
+  }
+
+  > span {
+    display: flex;
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    top: -0.5rem;
+    right: -0.5rem;
+    color: ${({ theme }) => theme.white};
+    background: ${({ theme }) => theme['yellow-900']};
   }
 `
