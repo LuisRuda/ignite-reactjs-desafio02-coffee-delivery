@@ -31,6 +31,12 @@ export function Checkout() {
     removeCoffee(coffeeId)
   }
 
+  const totalItems = coffees.reduce((acc, coffee) => {
+    return acc + coffee.price * coffee.amount
+  }, 0)
+  const freightValue = coffees.length > 0 ? 3.5 : 0
+  const totalCart = totalItems + freightValue
+
   return (
     <CheckoutContainer>
       <section>
@@ -89,15 +95,15 @@ export function Checkout() {
           <TotalContainer>
             <div>
               <span>Total de items</span>
-              <span>R$ 29,70</span>
+              <span>{formCurrency.format(totalItems)}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>{formCurrency.format(freightValue)}</span>
             </div>
             <div>
               <strong>Total</strong>
-              <strong>R$ 33,20</strong>
+              <strong>{formCurrency.format(totalCart)}</strong>
             </div>
             <button type="button">CONFIRMAR PEDIDO</button>
           </TotalContainer>
