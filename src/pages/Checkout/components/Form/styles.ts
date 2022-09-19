@@ -79,7 +79,11 @@ export const InputsContainer = styled.div`
   }
 `
 
-export const Input = styled.input`
+interface IInputProps {
+  hasError?: boolean
+}
+
+export const Input = styled.input<IInputProps>`
   height: 2.625rem;
   padding: 0.75rem;
   border-radius: 4px;
@@ -96,6 +100,19 @@ export const Input = styled.input`
   &::placeholder {
     color: ${(props) => props.theme['gray-600']};
   }
+
+  ${(props) =>
+    props.hasError &&
+    css`
+      border-color: ${({ theme }) => theme.error};
+    `};
+`
+
+export const ErrorText = styled.span`
+  display: block;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.error};
 `
 
 export const PaymentContainer = styled.div`

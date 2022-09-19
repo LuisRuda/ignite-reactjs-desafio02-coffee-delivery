@@ -153,5 +153,10 @@ export const TotalContainer = styled.div`
     &:hover {
       background: ${({ theme }) => theme['yellow-900']};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      background: ${({ theme }) => theme['yellow-900']};
+    }
   }
 `
