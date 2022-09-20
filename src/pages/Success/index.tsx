@@ -1,6 +1,10 @@
+import { useContext } from 'react'
+
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 
 import { deliveryImage } from '../../assets'
+import { IFormOfPayments } from '../../pages/Checkout'
+import { CheckoutContext } from '../../contexts/CheckoutContext'
 import {
   SuccessContainer,
   DetailsContainer,
@@ -10,6 +14,18 @@ import {
 } from './styles'
 
 export function Success() {
+  const { checkoutFormState } = useContext(CheckoutContext)
+
+  function getFormOfPayment(payment: IFormOfPayments) {
+    const formOfPayments = {
+      'credit-card': 'Cartão de Crédito',
+      'debit-card': 'Cartão de Débito',
+      money: 'Dinheiro',
+    }
+
+    return formOfPayments[payment]
+  }
+
   return (
     <SuccessContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -25,9 +41,9 @@ export function Success() {
               <div>
                 <div>
                   <span>Entrega em </span>
-                  <strong>Rua João Daniel Martinelli, 102</strong>
+                  <strong>{`${checkoutFormState.street}, ${checkoutFormState.number}`}</strong>
                 </div>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>{`${checkoutFormState.district} - ${checkoutFormState.city}, ${checkoutFormState.state}`}</span>
               </div>
             </LineInfoContainer>
 
@@ -47,7 +63,7 @@ export function Success() {
               </RoundedIcon>
               <div>
                 <span>Pagamento na entrega</span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{getFormOfPayment(checkoutFormState.payment)}</strong>
               </div>
             </LineInfoContainer>
           </section>

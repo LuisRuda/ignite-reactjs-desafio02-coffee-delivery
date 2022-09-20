@@ -4,6 +4,7 @@ import * as zod from 'zod'
 import { Trash } from 'phosphor-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { Form } from './components/Form'
 import { formCurrency } from '../../utils/format'
@@ -29,9 +30,15 @@ const checkoutValidationSchema = zod.object({
   payment: zod.string().min(1),
 })
 
-export type ICheckoutFormData = zod.infer<typeof checkoutValidationSchema>
+export type IFormOfPayments = 'credit-card' | 'debit-card' | 'money'
+
+export interface ICheckoutFormData
+  extends zod.infer<typeof checkoutValidationSchema> {
+  payment: IFormOfPayments
+}
 
 export function Checkout() {
+  const navigate = useNavigate()
   const { checkoutFormState, saveCheckoutFormValues } =
     useContext(CheckoutContext)
   const { coffees, updateCoffee, removeCoffee } = useContext(CartContext)
@@ -65,6 +72,7 @@ export function Checkout() {
 
   function handleConfirmOrder(data: ICheckoutFormData) {
     saveCheckoutFormValues(data)
+    navigate('/success')
   }
 
   const totalItems = coffees.reduce((acc, coffee) => {
