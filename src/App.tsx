@@ -8,13 +8,16 @@ import { Router } from './Router'
 import { GloblaStyle } from './styles/global'
 import { defaultTheme } from './styles/themes/default'
 import { CartContextProvider } from './contexts/CartContext'
+import { CheckoutContextProvider } from './contexts/CheckoutContext'
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
         <CartContextProvider>
-          <Router />
+          <CheckoutContextProvider>
+            <Router />
+          </CheckoutContextProvider>
         </CartContextProvider>
       </BrowserRouter>
 

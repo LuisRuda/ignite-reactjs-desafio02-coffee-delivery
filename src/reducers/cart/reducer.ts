@@ -31,7 +31,7 @@ export function CartReducer(state: ICartState, action: any) {
         })
       }
       return produce(state, (draft) => {
-        draft.coffees.push(action.payload.newCoffee)
+        draft.coffees.push(newCoffee)
       })
     }
     case ActionTypes.UPDATA_COFFEE: {

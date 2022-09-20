@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 
 import * as zod from 'zod'
 import { Trash } from 'phosphor-react'
@@ -7,6 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 
 import { Form } from './components/Form'
 import { formCurrency } from '../../utils/format'
+import { CheckoutContext } from '../../contexts/CheckoutContext'
 import { CartContext, IUpdateCoffee } from '../../contexts/CartContext'
 import { CounterControls } from '../../components'
 import {
@@ -28,13 +29,15 @@ const checkoutValidationSchema = zod.object({
   payment: zod.string().min(1),
 })
 
-type ICheckoutFormData = zod.infer<typeof checkoutValidationSchema>
+export type ICheckoutFormData = zod.infer<typeof checkoutValidationSchema>
 
 export function Checkout() {
+  const { checkoutFormState, saveCheckoutFormValues } =
+    useContext(CheckoutContext)
   const { coffees, updateCoffee, removeCoffee } = useContext(CartContext)
   const checkoutForm = useForm<ICheckoutFormData>({
     resolver: zodResolver(checkoutValidationSchema),
-    defaultValues: {
+    defaultValues: checkoutFormState || {
       zipCode: '',
       street: '',
       number: '',
@@ -44,12 +47,7 @@ export function Checkout() {
       state: '',
     },
   })
-  const { handleSubmit, formState } = checkoutForm
-  const { errors } = formState
-
-  useEffect(() => {
-    console.log(errors)
-  }, [errors])
+  const { handleSubmit } = checkoutForm
 
   function handleIncrement(coffeeUpdate: IUpdateCoffee) {
     updateCoffee(coffeeUpdate)
@@ -66,7 +64,7 @@ export function Checkout() {
   }
 
   function handleConfirmOrder(data: ICheckoutFormData) {
-    console.log(data)
+    saveCheckoutFormValues(data)
   }
 
   const totalItems = coffees.reduce((acc, coffee) => {
